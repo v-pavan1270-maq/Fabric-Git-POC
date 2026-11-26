@@ -1,0 +1,54 @@
+table Targets
+	lineageTag: 47b0a12a-1b43-4e27-a184-19e476084ed5
+
+	column MonthStart
+		dataType: int64
+		formatString: 0
+		lineageTag: e464df71-7732-40bd-8bfd-cbee03fbc679
+		summarizeBy: sum
+		sourceColumn: MonthStart
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 1226f212-f3c8-46d9-b2ad-3c299ab24fa0
+		summarizeBy: sum
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 804502e9-88c8-4114-9cb2-5907e14ee9dd
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTarget
+		dataType: double
+		lineageTag: ad93e2da-07bd-4577-a7a0-1a3280e8e619
+		summarizeBy: sum
+		sourceColumn: SalesTarget
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Targets = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\ArshitMAQSoftware\Downloads\PowerBI_Demo_Sales_Data.xlsx"), null, true),
+				    Targets_Sheet = Source{[Item="Targets",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Targets_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MonthStart", Int64.Type}, {"YearMonth", Int64.Type}, {"Region", type text}, {"SalesTarget", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

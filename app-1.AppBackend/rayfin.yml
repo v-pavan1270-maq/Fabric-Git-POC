@@ -1,0 +1,39 @@
+services:
+  auth:
+    expiryInMinutes: 60
+    password:
+      enabled: false
+    fabric:
+      enabled: true
+      externalEntraExchange: true
+    allowedRedirectUris:
+    - http://localhost:5173
+    - http://localhost:5174
+    - http://127.0.0.1:5174
+    - http://127.0.0.1:5173
+    enabled: true
+  data:
+    dialect: ''
+    allowIntrospection: false
+    enabled: false
+  storage:
+    enabled: false
+  staticHosting:
+    indexDocument: index.html
+    anonymousAccess: false
+    embedded:
+      only: false
+    enabled: true
+  functions:
+    enabled: false
+connectors:
+  pavan:
+    connector: fabric-semanticmodel
+    version: 1
+    operations:
+    - name: executeQuery
+    auth:
+      type: delegated
+    config:
+      workspaceId: 7cb5116a-87f0-471c-b5f4-329c3615a4c0
+      itemId: ec88e9ee-b516-44e5-ad5f-306b7073c59a

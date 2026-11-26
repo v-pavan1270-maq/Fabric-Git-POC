@@ -1,7 +1,6 @@
 {
-  "config": "{\"version\":\"5.49\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU11\",\"version\":\"5.50\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.49\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU11\",\"type\":2,\"version\":\"5.50\"}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
-  "publicCustomVisuals": [],
   "resourcePackages": [
     {
       "resourcePackage": {
@@ -28,6 +27,15 @@
       "name": "ReportSection",
       "visualContainers": [
         {
+          "config": "{\"name\":\"882ad96bb2fb131f1d3b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":602,\"y\":394,\"width\":409,\"height\":279,\"z\":5001,\"tabOrder\":5001}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FinancialData.Country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FinancialData\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Country\"},\"Name\":\"FinancialData.Country\",\"NativeReferenceName\":\"Country\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 279.00,
+          "width": 409.00,
+          "x": 602.00,
+          "y": 394.00,
+          "z": 5001.00
+        },
+        {
           "config": "{\"name\":\"a99f10a9cbe85e588ac0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":58.208955223880594,\"y\":38.507462686567166,\"z\":0,\"width\":443.2835820895522,\"height\":280.2985074626866,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(FinancialData.Sales)\"}],\"Category\":[{\"queryRef\":\"FinancialData.Country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FinancialData\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sales\"}},\"Function\":0},\"Name\":\"Sum(FinancialData.Sales)\",\"NativeReferenceName\":\"Sum of Sales\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Country\"},\"Name\":\"FinancialData.Country\",\"NativeReferenceName\":\"Country\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sales\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
           "height": 280.30,
@@ -37,13 +45,13 @@
           "z": 0.00
         },
         {
-          "config": "{\"name\":\"d584f963136c31200836\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640.2985074626865,\"y\":376.1194029850746,\"z\":3000,\"width\":443.2835820895522,\"height\":279.4029850746269,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(FinancialData.Profit)\"}],\"Category\":[{\"queryRef\":\"FinancialData.Date\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FinancialData\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Profit\"}},\"Function\":0},\"Name\":\"Sum(FinancialData.Profit)\",\"NativeReferenceName\":\"Sum of Profit\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Date\"},\"Name\":\"FinancialData.Date\",\"NativeReferenceName\":\"Date\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"abf86045d63fb360430b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1021,\"y\":22,\"width\":259,\"height\":280,\"z\":4000,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"waterfallChart\",\"projections\":{\"Category\":[{\"queryRef\":\"FinancialData.Date\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(FinancialData.Cost)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FinancialData\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Date\"},\"Name\":\"FinancialData.Date\",\"NativeReferenceName\":\"Date\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost\"}},\"Function\":0},\"Name\":\"Sum(FinancialData.Cost)\",\"NativeReferenceName\":\"Sum of Cost\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
-          "height": 279.40,
-          "width": 443.28,
-          "x": 640.30,
-          "y": 376.12,
-          "z": 3000.00
+          "height": 280.00,
+          "width": 259.00,
+          "x": 1021.00,
+          "y": 22.00,
+          "z": 4000.00
         },
         {
           "config": "{\"name\":\"ecf9faeadab78d81e66a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":128.955223880597,\"y\":394.02985074626866,\"z\":2000,\"width\":454.02985074626866,\"height\":279.4029850746269,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(FinancialData.Units Sold)\"}],\"Category\":[{\"queryRef\":\"FinancialData.Product\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FinancialData\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Units Sold\"}},\"Function\":0},\"Name\":\"Sum(FinancialData.Units Sold)\",\"NativeReferenceName\":\"Sum of Units Sold\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Product\"},\"Name\":\"FinancialData.Product\",\"NativeReferenceName\":\"Product\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Units Sold\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
@@ -62,6 +70,15 @@
           "x": 601.79,
           "y": 22.39,
           "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"f43913eba12c5815e90f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1011.044776119403,\"y\":344.77611940298505,\"z\":5000,\"width\":248.955223880597,\"height\":278.5074626865672,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(FinancialData.Column)\"},{\"queryRef\":\"Sum(FinancialData.Cost)\"},{\"queryRef\":\"FinancialData.Country\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FinancialData\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Column\"}},\"Function\":0},\"Name\":\"Sum(FinancialData.Column)\",\"NativeReferenceName\":\"Sum of Column\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost\"}},\"Function\":0},\"Name\":\"Sum(FinancialData.Cost)\",\"NativeReferenceName\":\"Sum of Cost\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Country\"},\"Name\":\"FinancialData.Country\",\"NativeReferenceName\":\"Country\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 278.51,
+          "width": 248.96,
+          "x": 1011.04,
+          "y": 344.78,
+          "z": 5000.00
         }
       ],
       "width": 1280.00

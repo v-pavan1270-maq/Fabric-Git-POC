@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "AppBackend",
+    "displayName": "app-1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dcfd555d-8114-a637-4e19-443bc890a8b8"
+  }
+}

@@ -1,0 +1,67 @@
+table Customers
+	lineageTag: 6681af8b-1207-4ba5-b121-f82ee72f30c3
+
+	column CustomerID
+		dataType: string
+		lineageTag: c5052fea-c3f1-4039-8a99-012cf0d0f720
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 5d813ea6-2e11-45b6-b8cf-f52a26ee068d
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: c13d97c1-0841-40de-8602-15e33fca1ac5
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 724b67fb-b2eb-49c5-a544-c5da5a5029de
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: df902098-9721-491d-b7ca-76391756387c
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerStatus
+		dataType: string
+		lineageTag: 8ddfb3f7-b511-46be-80e6-bb0ce83b5b14
+		summarizeBy: none
+		sourceColumn: CustomerStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customers = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\ArshitMAQSoftware\Downloads\PowerBI_Demo_Sales_Data.xlsx"), null, true),
+				    Customers_Sheet = Source{[Item="Customers",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Customers_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"CustomerID", type text}, {"CustomerName", type text}, {"Segment", type text}, {"City", type text}, {"Region", type text}, {"CustomerStatus", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

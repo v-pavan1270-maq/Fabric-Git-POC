@@ -1,0 +1,125 @@
+table Date
+	lineageTag: b1f683ac-e08d-4e4d-8e74-978432f2092c
+
+	column Date
+		dataType: int64
+		formatString: 0
+		lineageTag: 55aeb34c-09df-4dfd-99eb-e3399f776523
+		summarizeBy: sum
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: e71ffc1e-bac6-4b36-a9a6-da68e3ae8de8
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 12bb7657-f589-4150-a7ca-2d321f0d372d
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNo
+		dataType: int64
+		formatString: 0
+		lineageTag: c04f2c05-66a6-4eff-abc6-0e50a5c023dc
+		summarizeBy: sum
+		sourceColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 23f46627-f966-48e3-88ee-2039ec5d1e59
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2d0c56a0-5267-48b0-a01a-06866ece3e1e
+		summarizeBy: none
+		sourceColumn: MonthYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quarter
+		dataType: string
+		lineageTag: b0bb0668-ef79-4d74-836f-dc7378ee50e6
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: c0563c95-58a9-44cf-80b9-21374bcd63c7
+		summarizeBy: sum
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: int64
+		formatString: 0
+		lineageTag: 7009800b-b5ce-4070-9186-c24d7a9928da
+		summarizeBy: sum
+		sourceColumn: Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: c4ed0876-dac3-47cb-8563-2ed2041ca5e9
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		dataType: string
+		lineageTag: 10ada5e9-4f74-4ff5-a67f-d9b861baa621
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f6a2882e-d3f8-4437-8807-21316249c958
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\ArshitMAQSoftware\Downloads\PowerBI_Demo_Sales_Data.xlsx"), null, true),
+				    Date_Sheet = Source{[Item="Date",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Date_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", Int64.Type}, {"DateKey", Int64.Type}, {"Year", Int64.Type}, {"MonthNo", Int64.Type}, {"Month", type text}, {"MonthYear", type date}, {"Quarter", type text}, {"YearMonth", Int64.Type}, {"Week", Int64.Type}, {"Day", Int64.Type}, {"DayName", type text}, {"IsWeekend", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

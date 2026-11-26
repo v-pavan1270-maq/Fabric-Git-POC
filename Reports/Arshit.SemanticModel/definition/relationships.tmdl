@@ -1,0 +1,8 @@
+relationship AutoDetected_43e10374-5d89-4c1c-9ad7-e2a019e3cf5c
+	fromColumn: Sales.CustomerID
+	toColumn: Customers.CustomerID
+
+relationship AutoDetected_34242e38-3a14-42d7-996a-c5f32dbc0d6a
+	fromColumn: Sales.ProductID
+	toColumn: Products.ProductID
+

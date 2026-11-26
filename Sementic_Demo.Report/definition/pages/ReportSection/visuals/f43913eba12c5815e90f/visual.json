@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "f43913eba12c5815e90f",
+  "position": {
+    "x": 1011.044776119403,
+    "y": 344.77611940298505,
+    "z": 4000,
+    "height": 278.50746268656718,
+    "width": 248.955223880597,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FinancialData"
+                        }
+                      },
+                      "Property": "Column"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FinancialData.Column)",
+              "nativeQueryRef": "Sum of Column"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FinancialData"
+                        }
+                      },
+                      "Property": "Cost"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FinancialData.Cost)",
+              "nativeQueryRef": "Sum of Cost"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FinancialData"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
+              "queryRef": "FinancialData.Country",
+              "nativeQueryRef": "Country"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

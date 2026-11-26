@@ -1,0 +1,164 @@
+table Sales
+	lineageTag: 8dce904d-d4ab-437e-8c80-d336bc92dfe6
+
+	column OrderID
+		dataType: string
+		lineageTag: 45e8165b-ae75-4116-bb19-84b73dad4491
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: int64
+		formatString: 0
+		lineageTag: 6438056c-1ec1-49a8-bc23-005d4cc866d8
+		summarizeBy: sum
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: string
+		lineageTag: e5d287da-e348-4bd9-a5e7-fb1aad97c3b2
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: 57fa7058-14fa-4578-b209-54c67fda5e91
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 1162d3a7-7ee2-4f15-8c84-2c2f06e6f68b
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: 76f65e04-02c3-42c5-8027-f39f06965455
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountPct
+		dataType: double
+		lineageTag: 72784812-b2e4-4a53-91f5-c74117e20f86
+		summarizeBy: sum
+		sourceColumn: DiscountPct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrossSales
+		dataType: double
+		lineageTag: 0a5cda84-d316-4171-abd6-d58ca37b6fe7
+		summarizeBy: sum
+		sourceColumn: GrossSales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountAmount
+		dataType: double
+		lineageTag: b479f336-ce19-4b35-bdbe-c42f391674c3
+		summarizeBy: sum
+		sourceColumn: DiscountAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sales
+		dataType: double
+		lineageTag: 5e7bc808-cc33-4b9a-963f-cadf619dffea
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cost
+		dataType: double
+		lineageTag: f8b0c8d2-fa26-4992-b5ba-d2e8fc93dc14
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		lineageTag: f21e64ce-63b7-4050-a221-b11dd0a292b7
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProfitMarginPct
+		dataType: double
+		lineageTag: c3481d58-e559-4103-b8de-92ca461bfc0f
+		summarizeBy: sum
+		sourceColumn: ProfitMarginPct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Channel
+		dataType: string
+		lineageTag: 686b8c42-3dfe-445c-b2e6-2b9a9d573e5c
+		summarizeBy: none
+		sourceColumn: Channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentMethod
+		dataType: string
+		lineageTag: 0ab4994c-a741-472a-a4d8-2e4005acf11e
+		summarizeBy: none
+		sourceColumn: PaymentMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderStatus
+		dataType: string
+		lineageTag: 979cc9ce-d76c-4eb2-bfe2-495bfa78c2fa
+		summarizeBy: none
+		sourceColumn: OrderStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\ArshitMAQSoftware\Downloads\PowerBI_Demo_Sales_Data.xlsx"), null, true),
+				    Sales_Sheet = Source{[Item="Sales",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sales_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OrderID", type text}, {"OrderDate", Int64.Type}, {"CustomerID", type text}, {"ProductID", type text}, {"Quantity", Int64.Type}, {"UnitPrice", type number}, {"DiscountPct", type number}, {"GrossSales", type number}, {"DiscountAmount", type number}, {"Sales", type number}, {"Cost", type number}, {"Profit", type number}, {"ProfitMarginPct", type number}, {"Channel", type text}, {"PaymentMethod", type text}, {"OrderStatus", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

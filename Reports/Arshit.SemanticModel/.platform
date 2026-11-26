@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Arshit"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3ee29f6a-cf95-972f-46b0-4d5b89bfe62e"
+  }
+}

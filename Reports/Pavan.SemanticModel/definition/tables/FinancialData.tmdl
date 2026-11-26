@@ -122,6 +122,14 @@ table FinancialData
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column Column = FinancialData[Cost]+100
+		lineageTag: bd5dd5e9-fa6f-4b39-b1db-4b89427f15ea
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition FinancialData = m
 		mode: import
 		source =
